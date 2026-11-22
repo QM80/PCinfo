@@ -1,16 +1,6 @@
-import os
-import sys
-import subprocess
-import colorama
-from colorama import Fore, Style, Back
-import socket
-import platform
-import psutil
-import GPUtil
-import time
+import os,sys,subprocess,colorama,socket,platform,psutil,GPUtil,time,ctypes,curses
 import tkinter as tk
-import ctypes
-import curses
+from colorama import Fore, Style, Back
 
 def version():
     ver = sys.platform
@@ -165,8 +155,8 @@ def percent_line_drive():
 hostname = socket.gethostname()
 os_version = platform.platform()
 
-
-
+def clear():
+    print('\033c',end='')
 
 # programme code
 while True:
@@ -194,5 +184,5 @@ OS   {Fore.WHITE}{version()}{Fore.LIGHTBLUE_EX}
  └─  {Fore.WHITE}{aspect_ratio()} @ {get_refresh_rate()} Hz {Fore.MAGENTA}
  """
     print(system_info)
+    clear()
     time.sleep(0.1)
-    os.system('cls' if os.name == 'nt' else 'clear')
